@@ -1,12 +1,8 @@
-version: '3.8'
-
 services:
   crawler:
+    container_name: hyperf-crawler
     build:
       context: .
-      args:
-        SWOOLE_VERSION: 5.1.2
-        COMPOSER_VERSION: 2.7.1
     volumes:
       - ./data:/app/data
     environment:

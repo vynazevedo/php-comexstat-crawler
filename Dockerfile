@@ -15,11 +15,11 @@ RUN apk add --no-cache \
         openssl-dev \
         git \
         linux-headers \
-    && pecl install swoole-${SWOOLE_VERSION} \
+    && pecl install swoole-5.1.2 \
     && docker-php-ext-enable swoole \
     && apk del $PHPIZE_DEPS
 
-COPY --from=composer:${COMPOSER_VERSION} /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN echo "memory_limit=1G" > $PHP_INI_DIR/conf.d/memory-limit.ini \
     && echo "swoole.use_shortname=Off" > $PHP_INI_DIR/conf.d/swoole.ini \
@@ -51,4 +51,4 @@ USER appuser
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD php -r 'exit(extension_loaded("swoole") ? 0 : 1);'
 
-CMD ["php", "src/bootstrap.php"]
+CMD ["php", "./src/bootstrap.php"]
