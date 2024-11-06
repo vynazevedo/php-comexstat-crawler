@@ -4,11 +4,16 @@
   "type": "project",
   "require": {
     "php": ">=8.3",
-    "ext-swoole": "*"
+    "ext-swoole": ">=5.1.2"
   },
   "autoload": {
     "psr-4": {
       "App\\": "src/"
     }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
   }
 }
