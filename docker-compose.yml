@@ -5,8 +5,8 @@ services:
     build:
       context: .
       args:
-        SWOOLE_VERSION: 5.0.3
-        COMPOSER_VERSION: 2.6.5
+        SWOOLE_VERSION: 5.1.2
+        COMPOSER_VERSION: 2.7.1
     volumes:
       - ./data:/app/data
     environment:
