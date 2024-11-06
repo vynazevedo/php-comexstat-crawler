@@ -10,6 +10,10 @@ use DOMXPath;
 
 class ComexDataParser implements TradeDataParserInterface
 {
+    /**
+     * @param string $html
+     * @return TradeData
+     */
     public function parse(string $html): TradeData
     {
         $dom = new DOMDocument();
@@ -29,7 +33,7 @@ class ComexDataParser implements TradeDataParserInterface
      * @param DOMXPath $xpath
      * @return array|array[]
      */
-    private function extractTableData(\DOMXPath $xpath): array
+    private function extractTableData(DOMXPath $xpath): array
     {
         $data = [
             'exports' => [],
@@ -86,8 +90,7 @@ class ComexDataParser implements TradeDataParserInterface
      */
     private function parseNumericValue(string $value): float
     {
-        $value = str_replace(['.', ','], ['', '.'], trim($value));
-        return (float) $value;
+        return (float) str_replace(['.', ','], ['', '.'], trim($value));
     }
 
     /**

@@ -4,7 +4,9 @@
   "type": "project",
   "require": {
     "php": ">=8.3",
-    "ext-swoole": ">=5.1.2"
+    "ext-swoole": ">=5.1.2",
+    "ext-dom": "*",
+    "ext-libxml": "*"
   },
   "autoload": {
     "psr-4": {
